@@ -1,0 +1,73 @@
+﻿<Window x:Class="RepoCop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="RepoCop" Height="468" Width="493" Background="#121212"
+        WindowStartupLocation="CenterScreen" WindowStyle="None"
+        ResizeMode="CanResizeWithGrip" MinHeight="400" MinWidth="600"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown">
+
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#1D1D1D"/>
+            <Setter Property="BorderBrush" Value="#444444"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="0,0,26,46">
+        <!-- Header Section (for title and buttons) -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Custom Title Bar with Close, Minimize, Maximize buttons -->
+        <Grid Grid.Row="0" Background="#1E1E1E" Margin="0,0,-27,10">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                <Button Content="—" Width="40" Height="30" Click="MinimizeButton_Click" BorderBrush="Transparent" Background="Transparent"/>
+                <Button Content="□" Width="40" Height="30" Click="MaximizeButton_Click" BorderBrush="Transparent" Background="Transparent"/>
+                <Button Content="×" Width="40" Height="30" Click="CloseButton_Click" BorderBrush="Transparent" Background="Transparent"/>
+            </StackPanel>
+            <TextBlock FontSize="24" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Text="R3P0C0P"/>
+        </Grid>
+
+        <!-- Main Content Section -->
+        <Grid Grid.Row="1" Margin="20,0,20,20">
+            <StackPanel VerticalAlignment="Top" Height="125" RenderTransformOrigin="0.5,0.5" Margin="0,0,-28,0">
+                <StackPanel.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-0.066"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </StackPanel.RenderTransform>
+                <TextBox x:Name="RepoUrlTextBox" Height="40" FontSize="16" Foreground="White" Background="#2C2C2C"
+                         BorderBrush="#444444" BorderThickness="1"
+                         Text="Enter GitHub Repo URL" TextAlignment="Center"
+                         GotFocus="RepoUrlTextBox_GotFocus" LostFocus="RepoUrlTextBox_LostFocus" Width="477"/>
+                <Button x:Name="CloneRepoButton" Height="40" Content="Clone &amp; Scan Repo" FontSize="16" Foreground="White"
+                        Background="#4CAF50" BorderBrush="#4CAF50" BorderThickness="1"
+                        Click="CloneRepoButton_Click" Width="326">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="1" CornerRadius="10">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+
+            <TextBox Name="ResultsTextBox" Height="152" FontSize="14" Foreground="White" Background="#2C2C2C"
+                     BorderBrush="#444444" BorderThickness="1" VerticalScrollBarVisibility="Auto"
+                     HorizontalScrollBarVisibility="Auto" Margin="10,156,-10,0" TextWrapping="Wrap"
+                     IsReadOnly="True" VerticalAlignment="Top" AcceptsReturn="True"/>
+        </Grid>
+    </Grid>
+</Window>
