@@ -1,6 +1,7 @@
 # RepoCop 🚨🔍
 
 Welcome to **RepoCop**! Your trusty sidekick in the quest to keep your GitHub repositories safe from backdoors, reverse shells, and malicious code. Whether you're a developer, a security enthusiast, or just someone who loves clean code, RepoCop is here to help you maintain the integrity of your projects!
+__________________________________________________________________________________
 
 <p align="center">
   <img src="https://github.com/1yc4n0rn0t/RepoCop/blob/main/repocop.png" alt="Image" style="height: 350px; vertical-align: middle; margin-left: 10px;" />
